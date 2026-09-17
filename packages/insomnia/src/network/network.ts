@@ -26,7 +26,7 @@ import orderedJSON from 'json-order';
 
 import { maskOrDecryptVaultDataIfNecessary } from '~/common/templating/mask-or-decrypt-vault-data';
 import { RenderError } from '~/common/templating/render-error';
-import type { RenderedRequest, RenderPurpose } from '~/common/templating/types';
+import type { RenderedRequest, RenderPurpose, SensitiveValueCollector } from '~/common/templating/types';
 import { getKVPairFromData } from '~/common/utils/environment-utils';
 import { buildQueryStringFromParams, joinUrlAndQueryString, smartEncodeUrl } from '~/common/utils/url/querystring';
 import { getRuntime } from '~/runtimes';
@@ -779,6 +779,7 @@ export const tryToInterpolateRequest = async ({
   userUploadEnvironment,
   transientVariables,
   ignoreUndefinedEnvVariable,
+  sensitiveValueCollector,
 }: {
   request: Request;
   environment: string | Environment;
@@ -788,6 +789,7 @@ export const tryToInterpolateRequest = async ({
   userUploadEnvironment?: UserUploadEnvironment;
   transientVariables?: Environment;
   ignoreUndefinedEnvVariable?: boolean;
+  sensitiveValueCollector?: SensitiveValueCollector | null;
 }) => {
   try {
     return await getRenderedRequestAndContext({
@@ -799,6 +801,7 @@ export const tryToInterpolateRequest = async ({
       purpose,
       extraInfo,
       ignoreUndefinedEnvVariable,
+      sensitiveValueCollector,
     });
   } catch (err) {
     if (err instanceof RenderError) {
