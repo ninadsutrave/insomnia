@@ -87,7 +87,7 @@ app.get('/', (_req, res) => {
 });
 
 const MIN_REPLY_DELAY_MS = 1;
-const MAX_REPLY_DELAY_MS = 1_000;
+const MAX_REPLY_DELAY_MS = 1000;
 
 function delayResponse(req) {
   const requestedDelayMs = Number(req.headers['x-reply-delay-ms']);
@@ -136,9 +136,9 @@ app.get('/mcp', (_req, res) => {
 const PORT = process.env.MCP_PORT || 4020;
 const SECURE_PORT = process.env.MCP_SECURE_PORT || 4021;
 
-app.listen(PORT, () => {
+app.listen(PORT, '127.0.0.1', () => {
   process.stdout.write(`MCP mock server listening at http://localhost:${PORT}\n`);
 });
-https.createServer(HTTPS_OPTIONS, app).listen(SECURE_PORT, () => {
+https.createServer(HTTPS_OPTIONS, app).listen(SECURE_PORT, '127.0.0.1', () => {
   process.stdout.write(`MCP mock server listening at https://localhost:${SECURE_PORT}\n`);
 });

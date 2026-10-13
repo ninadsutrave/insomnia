@@ -51,12 +51,12 @@ io.on("connection", (socket) => {
   });
 });
 
-httpServer.listen(PORT, () => {
+httpServer.listen(PORT, '127.0.0.1', () => {
   process.stdout.write(
     `Socket.IO server listening at http://localhost:${PORT}\n`,
   );
 });
-httpsServer.listen(SECURE_PORT, () => {
+httpsServer.listen(SECURE_PORT, '127.0.0.1', () => {
   process.stdout.write(
     `Socket.IO server listening at https://localhost:${SECURE_PORT}\n`,
   );

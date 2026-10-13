@@ -95,8 +95,22 @@ export default defineConfig({
       timeout: 10 * 1000,
     },
     {
+      command: "node misc/git-server.js",
+      url: "http://localhost:4070/health",
+      reuseExistingServer: !process.env.CI,
+      timeout: 10 * 1000,
+      stdout: "ignore",
+      stderr: "ignore",
+    },
+    {
       command: "node misc/oauth2-server.js",
       url: "http://localhost:4080/health",
+      reuseExistingServer: !process.env.CI,
+      timeout: 10 * 1000,
+    },
+    {
+      command: "node misc/mock-bin-server.js",
+      url: "http://localhost:4090/health",
       reuseExistingServer: !process.env.CI,
       timeout: 10 * 1000,
     },
