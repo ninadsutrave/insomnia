@@ -59,8 +59,38 @@ export default defineConfig({
       timeout: 10 * 1000,
     },
     {
+      command: "node misc/event-stream-server.js",
+      url: "http://localhost:4050/",
+      reuseExistingServer: !process.env.CI,
+      timeout: 10 * 1000,
+    },
+    {
       command: "node misc/echo-server.js",
       url: "http://localhost:4060/",
+      reuseExistingServer: !process.env.CI,
+      timeout: 10 * 1000,
+    },
+    {
+      command: "node misc/socket-server.js",
+      url: "http://localhost:3000/socket.io/",
+      reuseExistingServer: !process.env.CI,
+      timeout: 10 * 1000,
+    },
+    {
+      command: "node misc/ws-echo-server.js",
+      url: "http://localhost:4040",
+      reuseExistingServer: !process.env.CI,
+      timeout: 10 * 1000,
+    },
+    {
+      command: "node misc/mcp-server.js",
+      url: "http://localhost:4020/",
+      reuseExistingServer: !process.env.CI,
+      timeout: 10 * 1000,
+    },
+    {
+      command: "node misc/grpc-server.js",
+      port: 9000,
       reuseExistingServer: !process.env.CI,
       timeout: 10 * 1000,
     },

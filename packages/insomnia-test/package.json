@@ -4,6 +4,11 @@
   "scripts": {
     "mock-api": "node misc/mock-api.js",
     "echo-server": "node misc/echo-server.js",
+    "event-stream-server": "node misc/event-stream-server.js",
+    "socket-server": "node misc/socket-server.js",
+    "ws-echo-server": "node misc/ws-echo-server.js",
+    "mcp-server": "node misc/mcp-server.js",
+    "grpc-server": "node misc/grpc-server.js",
     "oauth2-server": "node misc/oauth2-server.js"
   },
   "license": "Apache-2.0",
