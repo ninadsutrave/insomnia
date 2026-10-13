@@ -315,7 +315,7 @@ app.get("/_debug/last-token-request", (req, res) => {
 
 app.get("/health", (req, res) => res.send("ok"));
 
-app.listen(PORT, () => {
+app.listen(PORT, '127.0.0.1', () => {
   process.stdout.write(
     `OAuth2 mock server listening at http://localhost:${PORT}\n`,
   );
