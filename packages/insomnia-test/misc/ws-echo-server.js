@@ -45,12 +45,12 @@ wss.on("connection", handleConnection);
 const wssSecure = new WebSocketServer({ server: httpsServer });
 wssSecure.on("connection", handleConnection);
 
-httpServer.listen(PORT, () => {
+httpServer.listen(PORT, '127.0.0.1', () => {
   process.stdout.write(
     `WebSocket echo server listening at http://localhost:${PORT}\n`,
   );
 });
-httpsServer.listen(SECURE_PORT, () => {
+httpsServer.listen(SECURE_PORT, '127.0.0.1', () => {
   process.stdout.write(
     `WebSocket echo server listening at https://localhost:${SECURE_PORT}\n`,
   );

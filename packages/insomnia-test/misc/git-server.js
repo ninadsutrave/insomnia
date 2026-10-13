@@ -344,7 +344,7 @@ const server = http.createServer((req, res) => {
     .pipe(res);
 });
 
-server.listen(PORT, () => {
+server.listen(PORT, '127.0.0.1', () => {
   process.stdout.write(
     `Git mock server listening at http://localhost:${PORT}\n`,
   );

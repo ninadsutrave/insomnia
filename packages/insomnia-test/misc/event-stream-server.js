@@ -71,9 +71,9 @@ async function handleRequest(req, res) {
 const server = http.createServer(handleRequest);
 const httpsServer = https.createServer(HTTPS_OPTIONS, handleRequest);
 
-server.listen(4050, () => {
+server.listen(4050, '127.0.0.1', () => {
   process.stdout.write('Listening at http://localhost:4050\n');
 });
-httpsServer.listen(4051, () => {
+httpsServer.listen(4051, '127.0.0.1', () => {
   process.stdout.write('Listening at https://localhost:4051\n');
 });

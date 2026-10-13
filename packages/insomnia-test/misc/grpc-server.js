@@ -100,7 +100,7 @@ const SECURE_PORT = process.env.GRPC_SECURE_PORT || 9001;
 const MTLS_PORT = process.env.GRPC_MTLS_PORT || 9002;
 
 server.bindAsync(
-  `0.0.0.0:${PORT}`,
+  `127.0.0.1:${PORT}`,
   grpc.ServerCredentials.createInsecure(),
   (err) => {
     if (err) {
@@ -111,7 +111,7 @@ server.bindAsync(
   },
 );
 server.bindAsync(
-  `0.0.0.0:${SECURE_PORT}`,
+  `127.0.0.1:${SECURE_PORT}`,
   grpc.ServerCredentials.createSsl(null, [
     { private_key: TLS_KEY, cert_chain: TLS_CERT },
   ]),
@@ -126,7 +126,7 @@ server.bindAsync(
   },
 );
 server.bindAsync(
-  `0.0.0.0:${MTLS_PORT}`,
+  `127.0.0.1:${MTLS_PORT}`,
   grpc.ServerCredentials.createSsl(
     MTLS_CA,
     [{ private_key: MTLS_KEY, cert_chain: MTLS_CERT }],
